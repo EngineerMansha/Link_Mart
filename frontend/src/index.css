@@ -144,12 +144,12 @@ a.brand {
 /* Aside */
 aside {
   position: fixed;
-  width: 30rem;
+  width: 18rem;
   height: 100%;
   background-color:#eaf0f7;
   z-index: 1000;
   transform: translateX(-30rem);
-  transition: all 0.5s;
+  transition: all 0.8s;
 }
 aside.open {
   transform: translateX(0);

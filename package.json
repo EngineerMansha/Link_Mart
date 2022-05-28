@@ -1,5 +1,5 @@
 {
-  "name": "amazona",
+  "name": "link mart",
   "type": "module",
   "version": "1.0.0",
   "description": "Ecommerce website like amazon",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/basir/amazona.git"
+    "url": "https://github.com/EngineerMansha/Link_Mart.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/basir/amazona/issues"
+    "url": "https://github.com/EngineerMansha/Link_Mart.git"
   },
-  "homepage": "https://github.com/basir/amazona#readme",
+  "homepage": "https://github.com/EngineerMansha/Link_Mart.git",
   "devDependencies": {
     "eslint": "^7.9.0",
     "eslint-plugin-react": "^7.21.2",
