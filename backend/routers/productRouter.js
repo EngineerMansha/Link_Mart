@@ -1,5 +1,6 @@
 import express from 'express';
 import expressAsyncHandler from 'express-async-handler';
+// import { prototype } from 'jsonwebtoken/lib/NotBeforeError';
 import data from '../data.js';
 import Product from '../models/productModel.js';
 import User from '../models/userModel.js';
@@ -165,6 +166,7 @@ productRouter.delete(
 productRouter.post(
   '/:id/reviews',
   isAuth,
+  isAdmin,
   expressAsyncHandler(async (req, res) => {
     const productId = req.params.id;
     const product = await Product.findById(productId);
@@ -193,6 +195,7 @@ productRouter.post(
       res.status(404).send({ message: 'Product Not Found' });
     }
   })
+
 );
 
 export default productRouter;

@@ -61,14 +61,14 @@ export const isSellerOrAdmin = (req, res, next) => {
 
 export const mailgun = () =>
   mg({
-    apiKey: process.env.MAILGUN_API_KEY,
-    domain: process.env.MAILGUN_DOMIAN,
+    apiKey: "5eb3140b306b58f688f7c8be937a8437-8d821f0c-9a2f9469",
+    domain: "sandboxa48a6bc5eb4a406bb390750fb81cfb3e.mailgun.org",
   });
 
 export const payOrderEmailTemplate = (order) => {
   return `<h1>Thanks for shopping with us</h1>
-  <p>
-  Hi ${order.user.name},</p>
+  <b>
+  Hi ${order.shippingAddress.fullName},</b>
   <p>We have finished processing your order.</p>
   <h2>[Order ${order._id}] (${order.createdAt.toString().substring(0, 10)})</h2>
   <table>
@@ -94,19 +94,19 @@ export const payOrderEmailTemplate = (order) => {
   <tfoot>
   <tr>
   <td colspan="2">Items Price:</td>
-  <td align="right"> $${order.itemsPrice.toFixed(2)}</td>
+  <td align="right"> PKR${order.itemsPrice.toFixed(2)}</td>
   </tr>
   <tr>
   <td colspan="2">Tax Price:</td>
-  <td align="right"> $${order.taxPrice.toFixed(2)}</td>
+  <td align="right"> PKR${order.taxPrice.toFixed(2)}</td>
   </tr>
   <tr>
   <td colspan="2">Shipping Price:</td>
-  <td align="right"> $${order.shippingPrice.toFixed(2)}</td>
+  <td align="right"> PKR${order.shippingPrice.toFixed(2)}</td>
   </tr>
   <tr>
   <td colspan="2"><strong>Total Price:</strong></td>
-  <td align="right"><strong> $${order.totalPrice.toFixed(2)}</strong></td>
+  <td align="right"><strong> PKR${order.totalPrice.toFixed(2)}</strong></td>
   </tr>
   <tr>
   <td colspan="2">Payment Method:</td>

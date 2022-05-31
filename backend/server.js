@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-mongoose.connect(process.env.MONGODB_URL ||'mongodb+srv://Engineer_Mansha:Pak786751@fyp.gw7raru.mongodb.net/?retryWrites=true&w=majority');
+mongoose.connect(process.env.MONGODB_URL);
 app.use('/api/uploads', uploadRouter);
 app.use('/api/users', userRouter);
 app.use('/api/products', productRouter);

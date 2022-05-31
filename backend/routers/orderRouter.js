@@ -97,9 +97,37 @@ orderRouter.post(
         shippingPrice: req.body.shippingPrice,
         taxPrice: req.body.taxPrice,
         totalPrice: req.body.totalPrice,
-        user: req.user._id,
+        user: req.user,
       });
+      console.log(req.user);
       const createdOrder = await order.save();
+      try {
+        const domain = "sandboxa48a6bc5eb4a406bb390750fb81cfb3e.mailgun.org";
+        console.log('tuuuuuuuu hiiiiiiiiii aaaaaaa');
+        let orderTemp = payOrderEmailTemplate(order);
+        console.log(orderTemp);
+        console.log(order);
+        mailgun()
+          .messages()
+          .send(
+            {
+              from: `Link_Mart@${domain}`,
+              // to: `${order.user.name} <${order.user.email}>`,
+              to: 'manshauaf@gmail.com',
+              subject: `New order ${order._id}`,
+              html: orderTemp,
+            },
+            (error, body) => {
+              if (error) {
+                console.log(error);
+              } else {
+                console.log(body);
+              }
+            }
+          );
+      } catch (err) {
+        console.log(err);
+      }
       res
         .status(201)
         .send({ message: 'New Order Created', order: createdOrder });
@@ -138,13 +166,18 @@ orderRouter.put(
         email_address: req.body.email_address,
       };
       const updatedOrder = await order.save();
+      
+      /*
+      const domain = "sandboxa48a6bc5eb4a406bb390750fb81cfb3e.mailgun.org";
+      console.log('tuuuuuuuu hiiiiiiiiii aaaaaaa')
       try {
         mailgun()
           .messages()
           .send(
             {
-              from: 'Link_Mart <manshauaf@gmail.com>',
-              to: `${order.user.name} <${order.user.email}>`,
+              from: `test@${domain}`,
+              // to: `${order.user.name} <${order.user.email}>`,
+              to: 'manshauaf@gmail.com',
               subject: `New order ${order._id}`,
               html: payOrderEmailTemplate(order),
             },
@@ -158,10 +191,11 @@ orderRouter.put(
           );
       } catch (err) {
         console.log(err);
-      }
+      }*/
 
       res.send({ message: 'Order Paid', order: updatedOrder });
-    } else {
+    }
+     else {
       res.status(404).send({ message: 'Order Not Found' });
     }
   })
@@ -199,5 +233,7 @@ orderRouter.put(
     }
   })
 );
+
+
 
 export default orderRouter;

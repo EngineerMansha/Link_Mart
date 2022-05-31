@@ -154,6 +154,9 @@ aside {
 aside.open {
   transform: translateX(0);
 }
+.amazonCatButtons:hover {
+  background-color: #d3ded6;
+} 
 button.open-sidebar {
   font-size: 3rem;
   padding: 0.2rem 0.5rem;

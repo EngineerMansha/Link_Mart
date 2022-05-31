@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import { PayPalButton } from 'react-paypal-button-v2';
+// import { PayPalButton } from 'react-paypal-button-v2';
 import { useParams } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -86,7 +86,7 @@ export default function OrderScreen(props) {
           <ul>
             <li>
               <div className="card card-body">
-                <h2>Shippring</h2>
+                <h2 ><MessageBox variant="success center">Thank You For Ordering With Link Mart</MessageBox></h2>
                 <p>
                   <strong>Name:</strong> {order.shippingAddress.fullName} <br />
                   <strong>Address: </strong> {order.shippingAddress.address},
@@ -99,7 +99,7 @@ export default function OrderScreen(props) {
                     Delivered at {order.deliveredAt}
                   </MessageBox>
                 ) : (
-                  <MessageBox variant="danger">Not Delivered</MessageBox>
+                  <MessageBox variant="success">Processing Start</MessageBox>
                 )}
               </div>
             </li>
@@ -114,7 +114,7 @@ export default function OrderScreen(props) {
                     Paid at {order.paidAt}
                   </MessageBox>
                 ) : (
-                  <MessageBox variant="danger">Not Paid</MessageBox>
+                  <MessageBox variant="danger">Wait 2 or 3 days </MessageBox>
                 )}
               </div>
             </li>
@@ -183,7 +183,7 @@ export default function OrderScreen(props) {
                   </div>
                 </div>
               </li>
-              {!order.isPaid && (
+              {/* {!order.isPaid && (
                 <li>
                   {!sdkReady ? (
                     <LoadingBox></LoadingBox>
@@ -201,7 +201,7 @@ export default function OrderScreen(props) {
                     </>
                   )}
                 </li>
-              )}
+              )} */}
               {userInfo.isAdmin && order.isPaid && !order.isDelivered && (
                 <li>
                   {loadingDeliver && <LoadingBox></LoadingBox>}
